@@ -1,16 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { StyleService } from 'src/app/services/style.service';
+import { Base } from '../base/base';
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.css'],
 })
-export class EducationComponent {
+export class EducationComponent extends Base implements AfterViewInit {
   bannerData: any;
   information: any;
   blueSectionData: any;
   testimoniesData: any;
-  constructor() {
+
+  ngAfterViewInit(): void {
+    this.setHeight(
+      this.styleService,
+      this.elementRef,
+      '.educ-sec-1',
+      this.renderer
+    );
+  }
+
+  constructor(
+    private renderer: Renderer2,
+    private styleService: StyleService,
+    private elementRef: ElementRef
+  ) {
+    super();
     this.bannerData = {
       class: 'educ',
       title: 'Education.',

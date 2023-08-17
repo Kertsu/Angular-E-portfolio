@@ -1,17 +1,34 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
+import { Base } from '../base/base';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-awards-and-honors',
   templateUrl: './awards-and-honors.component.html',
   styleUrls: ['./awards-and-honors.component.css'],
 })
-export class AwardsAndHonorsComponent {
+export class AwardsAndHonorsComponent extends Base implements AfterViewInit {
   bannerData: any;
   blueSectionData: any;
   testimoniesData: any;
   timelineData: any;
   cardData: any;
-  constructor() {
+
+  ngAfterViewInit(): void {
+    this.setHeight(
+      this.styleService,
+      this.elementRef,
+      '.awards-sec-1',
+      this.renderer
+    );
+  }
+
+  constructor(
+    private renderer: Renderer2,
+    private styleService: StyleService,
+    private elementRef: ElementRef
+  ) {
+    super();
     this.bannerData = {
       class: 'awards',
       title: 'Awards.',

@@ -1,14 +1,31 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
+import { StyleService } from 'src/app/services/style.service';
+import { Base } from '../base/base';
 
 @Component({
   selector: 'app-interests',
   templateUrl: './interests.component.html',
   styleUrls: ['./interests.component.css'],
 })
-export class InterestsComponent {
+export class InterestsComponent extends Base implements AfterViewInit {
   bannerData: any;
   interestsData: any;
-  constructor() {
+
+  ngAfterViewInit(): void {
+    this.setHeight(
+      this.styleService,
+      this.elementRef,
+      '.interests-sec-1',
+      this.renderer
+    );
+  }
+
+  constructor(
+    private renderer: Renderer2,
+    private styleService: StyleService,
+    private elementRef: ElementRef
+  ) {
+    super();
     this.bannerData = {
       class: 'interests',
       title: 'Interests.',

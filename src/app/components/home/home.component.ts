@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
+import { StyleService } from 'src/app/services/style.service';
+import { Base } from '../base/base';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent extends Base implements AfterViewInit {
   progLangs!: any;
   blueSectionData!: any;
   information!: any;
   services!: any;
 
-  constructor() {
+  ngAfterViewInit(): void {
+    this.setHeight(this.styleService, this.elementRef, '.sec-1', this.renderer);
+  }
+
+  constructor(
+    private renderer: Renderer2,
+    private styleService: StyleService,
+    private elementRef: ElementRef
+  ) {
+    super();
     this.progLangs = [
       {
         title: 'HTML',
