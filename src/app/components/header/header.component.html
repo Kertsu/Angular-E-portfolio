@@ -1,4 +1,8 @@
-<header class="header" id="header">
+<header
+  class="header"
+  id="header"
+  [ngClass]="{ 'header-scrolled': isHeaderScrolled }"
+>
   <div class="container container-nav">
     <div class="header-logo">
       <span>Kertsu</span>

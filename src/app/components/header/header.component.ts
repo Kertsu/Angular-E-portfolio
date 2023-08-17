@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { StyleService } from 'src/app/services/style.service';
 
@@ -9,6 +9,7 @@ import { StyleService } from 'src/app/services/style.service';
 })
 export class HeaderComponent implements OnInit {
   routes!: any;
+  isHeaderScrolled: boolean = false;
 
   constructor(
     private router: Router,
@@ -28,6 +29,15 @@ export class HeaderComponent implements OnInit {
     const headerHeight =
       this.elementRef.nativeElement.querySelector('.header').clientHeight;
     this.styleService.setHeaderHeight(headerHeight);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+    const threshold = 30;
+
+    this.isHeaderScrolled = scrollY > threshold ? true : false;
   }
 
   isActive(routeLink: string): boolean {
