@@ -1,0 +1,21 @@
+<div class="educ-sec-3 container">
+  <div class="testimonies">
+    <h2>People's Feedback About Me</h2>
+    <p>Don't worry, I asked their permissions.</p>
+  </div>
+
+  <div>
+    <ng-container *ngFor="let data of testimoniesData">
+      <div class="testimonies-content">
+        <div class="thumb">
+          <img src="../../../assets/images/friends/{{ data.img }}" alt="" />
+        </div>
+        <div class="description">
+          <p>{{ data.testimony }}</p>
+          <h4>{{ data.name }}</h4>
+          <p>{{ data.section }}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

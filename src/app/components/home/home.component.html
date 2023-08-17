@@ -1,0 +1,135 @@
+<!-- HEADER START -->
+<app-header></app-header>
+<!-- HEADER END -->
+<!-- MOBILE NAV -->
+<app-mobile-nav></app-mobile-nav>
+<!-- MOBILE NAV -->
+<!-- MAIN START -->
+<div class="sec-1 container">
+  <div class="sec1-col1-row2">
+    <p>THIS IS ME</p>
+    <h1>
+      <span style="color: #0779e4">K</span>URTD
+      <span style="color: #0779e4">D</span>ANIEL
+      <span style="color: #0779e4">B</span>IGTAS
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum
+      repellat nesciunt, tempore maxime minus!
+    </p>
+    <button onclick="document.getElementById('foot').scrollIntoView();">
+      MORE ABOUT ME
+    </button>
+  </div>
+  <div class="sec1-col2-row123">
+    <img
+      class="hero-image"
+      border="1"
+      src="../../../assets/images/me3.jpg"
+      alt=""
+    />
+  </div>
+</div>
+<section class="banner">
+  <div class="sec-2 container">
+    <div id="skills sec2-col1-row2">
+      <h2>SKILLS</h2>
+      <p>
+        Still got a lot to learn, but I am holding to the line "progress is
+        progress, no matter how small".
+      </p>
+
+      <div class="row">
+        <ng-container *ngFor="let progLang of progLangs">
+          <div class="languages">
+            <div class="progress-wrap">
+              <h3>{{ progLang.title }}</h3>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="5"
+                  [style.width.%]="progLang.progress"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="sec2-col1-row1">
+      <img src="../../../assets/images/me4.jpg" alt="" />
+    </div>
+  </div>
+</section>
+<app-blue-section [sectionData]="blueSectionData"></app-blue-section>
+<div class="sec-3 container">
+  <div>
+    <img width="200" border="1" src="../../../assets/images/me5.jpg" alt="" />
+  </div>
+  <div>
+    <span class="subheading">MY INTRO</span>
+    <h3>ABOUT ME</h3>
+    <span>PERSONAL DETAILS</span>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui veniam
+      necessitatibus at dignissimos nisi id nesciunt quo minus molestias.
+      Aperiam reiciendis recusandae non architecto ipsa iusto rem soluta
+      accusamus repellat!
+    </p>
+
+    <ul class="info-holder">
+      <ng-container *ngFor="let info of information">
+        <li>
+          <span class="info-key">{{ info.title }}</span>
+          <span>{{ info.value }}</span>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+<section class="blue">
+  <div class="sec-5 container">
+    <div>
+      <h2>My Story</h2>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
+        aspernatur voluptate ullam voluptatem nesciunt eos at commodi quae,
+        tempore blanditiis animi, tenetur omnis nobis dignissimos officiis culpa
+        modi reiciendis atque. Veritatis pariatur consectetur autem aliquid.
+        Molestias modi inventore sunt natus obcaecati temporibus consequuntur
+        culpa, asperiores fuga iste fugit dolorum placeat mollitia minus aliquam
+        provident eos ullam porro? Non accusamus esse placeat nam consequuntur
+        ratione numquam aliquam quisquam quod voluptatum asperiores, iure est
+        minus molestiae omnis libero incidunt deleniti quas! Iure!
+      </p>
+    </div>
+  </div>
+</section>
+<section class="banner">
+  <div class="sec-6 container">
+    <div>
+      <h2>My Offered Services</h2>
+      <p>
+        I guess that this time was right for me to say: I really learned a lot.
+      </p>
+    </div>
+    <div class="offers-wrapper">
+      <ng-container *ngFor="let service of services">
+        <div>
+          <i class="{{ service.icon }}"></i>
+          <h3>{{ service.title }}</h3>
+          <p>
+            {{ service.caption }}
+          </p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<!-- MAIN END -->
+<!-- FOOTER START -->
+<app-footer></app-footer>
+<!-- FOOTER END -->

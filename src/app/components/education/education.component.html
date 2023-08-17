@@ -1,0 +1,44 @@
+<!-- HEADER START -->
+<app-header></app-header>
+<!-- HEADER END -->
+<!-- MOBILE NAV -->
+<app-mobile-nav></app-mobile-nav>
+<!-- MOBILE NAV -->
+<!-- MAIN START -->
+<app-banner [bannerData]="bannerData"></app-banner>
+<section class="banner">
+  <div class="educ-sec-2 container">
+    <div class="timeline">
+      <h2>My Education Timeline</h2>
+      <p>
+        Einstein determined that time is relative. I don't know why. But time
+        really flies so fast.
+      </p>
+    </div>
+    <!-- <div class="timeline-content"> -->
+    <ul>
+      <ng-container *ngFor="let data of information">
+        <li>
+          <div class="content">
+            <div>
+              <img src="../../../assets/images/{{ data.img }}" alt="" />
+            </div>
+            <div>
+              <h2>{{ data.title }}</h2>
+              <p>
+                {{ data.caption }}
+              </p>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+    <!-- </div> -->
+  </div>
+</section>
+<app-blue-section [sectionData]="blueSectionData"></app-blue-section>
+<app-testimonies [testimoniesData]="testimoniesData"></app-testimonies>
+<!-- MAIN END -->
+<!-- FOOTER START -->
+<app-footer></app-footer>
+<!-- FOOTER END -->

@@ -1,0 +1,32 @@
+<header class="header" id="header">
+  <div class="container container-nav">
+    <div class="header-logo">
+      <span>Kertsu</span>
+    </div>
+    <div class="header-nav">
+      <nav>
+        <ul class="nav-wide">
+          <ng-container *ngFor="let route of routes; let i = index">
+            <li>
+              <a
+                [class.active]="isActive(route.routerLink)"
+                [routerLink]="[route.routerLink]"
+                >{{ route.title }}</a
+              >
+            </li>
+          </ng-container>
+          <li class="toggle">
+            <i class="fas fa-moon toggle-icon"></i>
+            <i class="fas fa-sun toggle-icon"></i>
+            <div class="toggle-ball"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="button btn-bars">
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+    </div>
+  </div>
+</header>

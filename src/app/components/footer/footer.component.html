@@ -1,0 +1,29 @@
+<footer>
+  <section class="_footer">
+    <div class="container footer">
+      <div>
+        <h3>About Me</h3>
+        <p>
+          I am at the point in my life where sleeping is considered as a sin.
+        </p>
+        <p>
+          Copyright ©2023 All rights reserved | This template is made in Angular
+          with ♡ by <span class="name">Kurtd Daniel</span>
+        </p>
+      </div>
+      <div>
+        <h3>Follow Me</h3>
+        <p>Let us be socially connected</p>
+        <ul class="footer-links">
+          <ng-container *ngFor="let data of footerData">
+            <li>
+              <a title="{{ data.link }}" href="{{ data.link }}" target="_blank"
+                ><i class="{{ data.icon }}"></i
+              ></a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </section>
+</footer>

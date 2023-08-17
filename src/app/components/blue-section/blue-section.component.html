@@ -1,0 +1,17 @@
+<section class="blue">
+  <div class="sec-4 container">
+    <ng-container *ngFor="let data of sectionData">
+      <div class="counter">
+        <div class="icon">
+          <i class="{{ data.icon }}"></i>
+        </div>
+        <div class="text">
+          <h2>
+            <span class="countup">{{ data.count }}</span>
+          </h2>
+          <span class="caption">{{ data.caption }}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

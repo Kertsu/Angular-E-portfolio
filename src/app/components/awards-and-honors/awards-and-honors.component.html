@@ -1,0 +1,71 @@
+<!-- HEADER START -->
+<app-header></app-header>
+<!-- HEADER END -->
+<!-- MOBILE NAV -->
+<app-mobile-nav></app-mobile-nav>
+<!-- MOBILE NAV -->
+<!-- MAIN START -->
+<app-banner [bannerData]="bannerData"></app-banner>
+
+<div class="awards-sec-3 container">
+  <div class="achievements-timeline">
+    <h2>Achievements Timeline</h2>
+    <p>
+      This is what I am talking about: "Progress is progress, no matter how
+      small."
+    </p>
+  </div>
+  <div class="achievements-holder">
+    <ul>
+      <ng-container *ngFor="let data of timelineData">
+        <li>
+          <span></span>
+          <div class="timeline-wrapper">
+            <div class="d-flex">
+              <p>{{ data.date }}</p>
+            </div>
+            <div class="wrapper-body">
+              <h4>{{ data.event }}</h4>
+              <p>{{ data.title }}</p>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+<section class="banner">
+  <div class="container awards-sec-2">
+    <div class="achievement-title">
+      <h2>My Latest Achievements</h2>
+      <p>No pain, no gain. No choice.</p>
+      <span class="shrug">¯\_(ツ)_/¯</span>
+    </div>
+
+    <div class="card-holder">
+      <ng-container *ngFor="let data of cardData">
+        <div class="card">
+          <div>
+            <img src="../../../assets/images/{{ data.img }}" alt="" />
+          </div>
+          <div>
+            <h2>{{ data.title }}</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis blanditiis iste eos adipisci amet ducimus optio ab
+              aliquam possimus dolore.
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<app-blue-section [sectionData]="blueSectionData"></app-blue-section>
+<app-testimonies [testimoniesData]="testimoniesData"></app-testimonies>
+<!-- MAIN END -->
+<!-- FOOTER START -->
+<app-footer></app-footer>
+<!-- FOOTER END -->

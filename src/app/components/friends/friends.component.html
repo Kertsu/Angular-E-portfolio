@@ -1,0 +1,49 @@
+<!-- HEADER START -->
+<app-header></app-header>
+<!-- HEADER END -->
+<!-- MOBILE NAV -->
+<app-mobile-nav></app-mobile-nav>
+<!-- MOBILE NAV -->
+<!-- MAIN START -->
+<app-banner [bannerData]="bannerData"></app-banner>
+<section class="banner">
+  <div class="container friends-sec-2">
+    <ng-container *ngFor="let data of friendsData">
+      <div class="friends-cards">
+        <div class="image-holder">
+          <img
+            width="500"
+            src="../../../assets/images/friends/{{ data.img }}"
+            alt=""
+          />
+        </div>
+        <div class="text-holder">
+          <h2>{{ data.name }}</h2>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi,
+            unde inventore aliquid officia a voluptatem neque suscipit
+            aspernatur facere laudantium!
+          </p>
+
+          <ul>
+            <ng-container *ngFor="let accounts of data.accounts">
+              <li>
+                <a
+                  target="_blank"
+                  href="{{ accounts.link }}"
+                  title="{{ accounts.link }}"
+                  ><i class="{{ accounts.icon }}"></i
+                ></a>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
+<app-banner [bannerData]="bannerData"></app-banner>
+<!-- MAIN END -->
+<!-- FOOTER START -->
+<app-footer></app-footer>
+<!-- FOOTER END -->
