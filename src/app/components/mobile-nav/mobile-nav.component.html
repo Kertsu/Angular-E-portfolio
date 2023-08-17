@@ -1,9 +1,14 @@
-<div id="menu" class="menu-div" [class.animate]="showMenu">
+<div
+  id="menu"
+  class="menu-div"
+  [ngClass]="{ animate: showMenu, 'animate-exit': isClosing }"
+>
   <nav class="mobile-nav">
     <ul class="mobile-nav-ul">
       <ng-container *ngFor="let route of routes; let i = index">
-        <li>
+        <li (click)="clickedLi($event)">
           <a
+            (click)="clickedA()"
             class="mobile-nav-a"
             [class.active]="isActive(route.routerLink)"
             [routerLink]="[route.routerLink]"
