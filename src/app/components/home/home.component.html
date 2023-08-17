@@ -1,9 +1,9 @@
 <!-- HEADER START -->
-<app-header></app-header>
+<app-header (data)="setToggle()"></app-header>
 <div class="mobile-body-dim"></div>
 <!-- HEADER END -->
 <!-- MOBILE NAV -->
-<app-mobile-nav></app-mobile-nav>
+<app-mobile-nav [showMenu]="showMenu"></app-mobile-nav>
 <!-- MOBILE NAV -->
 <!-- MAIN START -->
 <div class="sec-1 container">

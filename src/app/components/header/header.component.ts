@@ -1,6 +1,15 @@
-import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  HostListener,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { StyleService } from 'src/app/services/style.service';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +19,13 @@ import { StyleService } from 'src/app/services/style.service';
 export class HeaderComponent implements OnInit {
   routes!: any;
   isHeaderScrolled: boolean = false;
-
+  isClicked!: Observable<boolean>;
+  @Output() data = new EventEmitter();
   constructor(
     private router: Router,
     protected elementRef: ElementRef,
-    private styleService: StyleService
+    private styleService: StyleService,
+    private uiService: UiService
   ) {
     this.routes = [
       { routerLink: '/', title: 'Home' },
@@ -46,5 +57,10 @@ export class HeaderComponent implements OnInit {
 
     // Check if the current URL matches the provided routeLink
     return currentUrl === routeLink;
+  }
+
+  onToggle() {
+    this.uiService.toggleMenu();
+    this.data.emit(this.uiService.getIsToggled());
   }
 }

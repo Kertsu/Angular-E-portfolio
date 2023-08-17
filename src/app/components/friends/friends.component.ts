@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
 import { StyleService } from 'src/app/services/style.service';
-import { Base } from '../base/base';
+import { Base } from '../Base';
 
 @Component({
   selector: 'app-friends',

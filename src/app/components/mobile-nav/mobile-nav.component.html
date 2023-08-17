@@ -1,17 +1,17 @@
-<div id="menu" class="menu-div">
+<div id="menu" class="menu-div" [class.animate]="showMenu">
   <nav class="mobile-nav">
     <ul class="mobile-nav-ul">
-      <li><a class="mobile-nav-a" href="/index.html">Home</a></li>
-      <li>
-        <a class="mobile-nav-a" href="/html/education.html">Education</a>
-      </li>
-      <li>
-        <a class="mobile-nav-a" href="/html/awards-and-honors.html">Awards</a>
-      </li>
-      <li><a class="mobile-nav-a" href="/html/friends.html">Friends</a></li>
-      <li>
-        <a class="mobile-nav-a active" href="/html/interests.html">Interests</a>
-      </li>
+      <ng-container *ngFor="let route of routes; let i = index">
+        <li>
+          <a
+            class="mobile-nav-a"
+            [class.active]="isActive(route.routerLink)"
+            [routerLink]="[route.routerLink]"
+            >{{ route.title }}</a
+          >
+        </li>
+      </ng-container>
+
       <li><a class="mobile-nav-a mobile-theme-btn">Theme</a></li>
       <li class="mobile-toggle">
         <i class="fas fa-moon mobile-toggle-icon"></i>

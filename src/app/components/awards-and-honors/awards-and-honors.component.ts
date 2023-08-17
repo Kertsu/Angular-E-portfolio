@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
-import { Base } from '../base/base';
+import { Base } from '../Base';
 import { StyleService } from 'src/app/services/style.service';
 
 @Component({

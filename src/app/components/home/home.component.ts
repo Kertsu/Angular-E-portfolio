@@ -1,6 +1,7 @@
 import { Component, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import { StyleService } from 'src/app/services/style.service';
-import { Base } from '../base/base';
+import { UiService } from 'src/app/services/ui.service';
+import { Base } from '../Base';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,14 @@ export class HomeComponent extends Base implements AfterViewInit {
   blueSectionData!: any;
   information!: any;
   services!: any;
+  showMenu: any;
 
   ngAfterViewInit(): void {
     this.setHeight(this.styleService, this.elementRef, '.sec-1', this.renderer);
   }
 
   constructor(
+    private uiService: UiService,
     private renderer: Renderer2,
     private styleService: StyleService,
     private elementRef: ElementRef
@@ -107,5 +110,9 @@ export class HomeComponent extends Base implements AfterViewInit {
           'We prefer quality over quantity; it depends on the case, though.',
       },
     ];
+  }
+
+  setToggle() {
+    this.showMenu = this.uiService.getIsToggled();
   }
 }
