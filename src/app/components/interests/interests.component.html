@@ -1,14 +1,55 @@
+<!-- HEADER START -->
 <app-header></app-header>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<p>interest</p>
+<!-- HEADER END -->
+<!-- MOBILE NAV -->
+<app-mobile-nav></app-mobile-nav>
+<!-- MOBILE NAV -->
+<!-- MAIN START -->
+<app-banner [bannerData]="bannerData"></app-banner>
+<div class="interests-separator">
+  <div class="interests-sec-2 container">
+    <div class="interests-image-holder">
+      <img src="../../../assets/images/hxh2.jpeg" alt="" />
+    </div>
+    <div>
+      <h1>Watching Anime</h1>
+      <p>
+        Hunter x Hunter became my favorite anime even though I haven't completed
+        any other anime yet.
+      </p>
+    </div>
+  </div>
+
+  <div class="interests-sec-3 container">
+    <ng-container *ngFor="let data of interestsData">
+      <div class="interests-cards">
+        <div class="interests-image-holder">
+          <img width="500" src="../../../assets/images/{{ data.img }}" alt="" />
+        </div>
+        <div class="interests-name-holder">
+          <h2>{{ data.name }}</h2>
+        </div>
+        <div class="interests-text-holder">
+          <p>
+            {{ data.caption }}
+          </p>
+          <div class="nen-ability-holder">
+            <div
+              class="nen-ability-scale"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="1"
+              [style.width.%]="data.nen"
+            ></div>
+          </div>
+          <p>Nen Ability Scale</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<!-- MAIN END -->
+<!-- FOOTER START -->
+<app-footer></app-footer>
+<!-- FOOTER END -->
