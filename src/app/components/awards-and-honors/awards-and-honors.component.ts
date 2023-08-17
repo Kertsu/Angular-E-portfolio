@@ -1,6 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Renderer2,
+} from '@angular/core';
 import { Base } from '../Base';
 import { StyleService } from 'src/app/services/style.service';
+import { DOCUMENT } from '@angular/common';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-awards-and-honors',
@@ -24,11 +32,13 @@ export class AwardsAndHonorsComponent extends Base implements AfterViewInit {
   }
 
   constructor(
-    private renderer: Renderer2,
-    private styleService: StyleService,
-    private elementRef: ElementRef
+    protected override uiService: UiService,
+    protected override renderer: Renderer2,
+    protected override styleService: StyleService,
+    protected override elementRef: ElementRef,
+    @Inject(DOCUMENT) protected override document: Document
   ) {
-    super();
+    super(uiService, renderer, styleService, elementRef, document);
     this.bannerData = {
       class: 'awards',
       title: 'Awards.',
@@ -145,5 +155,20 @@ export class AwardsAndHonorsComponent extends Base implements AfterViewInit {
         caption: `Our group in Computer Programming II was asked to present our work in the Research Colloquium of our seniors. We built a game using Unity Game Engine: all the animations, character, and backgrounds were originally created by us. The source code for the movements was also created by us. I watched a lot of videos just to be able to learn how things work in Unity.`,
       },
     ];
+    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
+      this.showMenu = value;
+      this.dim = value;
+      console.log(this.showMenu);
+      console.log(this.dim);
+    });
+  }
+
+  setToggle() {
+    this.uiService.toggleMenu();
+    if (this.dim) {
+      this.renderer.setStyle(this.document.body, 'overflow-y', 'hidden');
+    } else {
+      this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
+    }
   }
 }

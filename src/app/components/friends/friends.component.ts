@@ -1,6 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Renderer2,
+} from '@angular/core';
 import { StyleService } from 'src/app/services/style.service';
 import { Base } from '../Base';
+import { DOCUMENT } from '@angular/common';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-friends',
@@ -21,11 +29,13 @@ export class FriendsComponent extends Base implements AfterViewInit {
   }
 
   constructor(
-    private renderer: Renderer2,
-    private styleService: StyleService,
-    private elementRef: ElementRef
+    protected override uiService: UiService,
+    protected override renderer: Renderer2,
+    protected override styleService: StyleService,
+    protected override elementRef: ElementRef,
+    @Inject(DOCUMENT) protected override document: Document
   ) {
-    super();
+    super(uiService, renderer, styleService, elementRef, document);
     this.bannerData = {
       class: 'friends',
       title: 'Friends.',
@@ -164,5 +174,21 @@ export class FriendsComponent extends Base implements AfterViewInit {
         ],
       },
     ];
+
+    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
+      this.showMenu = value;
+      this.dim = value;
+      console.log(this.showMenu);
+      console.log(this.dim);
+    });
+  }
+
+  setToggle() {
+    this.uiService.toggleMenu();
+    if (this.dim) {
+      this.renderer.setStyle(this.document.body, 'overflow-y', 'hidden');
+    } else {
+      this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
+    }
   }
 }

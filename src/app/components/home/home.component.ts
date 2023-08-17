@@ -1,7 +1,14 @@
-import { Component, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  Renderer2,
+  ElementRef,
+  AfterViewInit,
+  Inject,
+} from '@angular/core';
 import { StyleService } from 'src/app/services/style.service';
 import { UiService } from 'src/app/services/ui.service';
 import { Base } from '../Base';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -13,19 +20,20 @@ export class HomeComponent extends Base implements AfterViewInit {
   blueSectionData!: any;
   information!: any;
   services!: any;
-  showMenu: any;
 
   ngAfterViewInit(): void {
+    console.log('ngAfterViewInit executed');
     this.setHeight(this.styleService, this.elementRef, '.sec-1', this.renderer);
   }
 
   constructor(
-    private uiService: UiService,
-    private renderer: Renderer2,
-    private styleService: StyleService,
-    private elementRef: ElementRef
+    protected override uiService: UiService,
+    protected override renderer: Renderer2,
+    protected override styleService: StyleService,
+    protected override elementRef: ElementRef,
+    @Inject(DOCUMENT) protected override document: Document
   ) {
-    super();
+    super(uiService, renderer, styleService, elementRef, document);
     this.progLangs = [
       {
         title: 'HTML',
@@ -110,9 +118,21 @@ export class HomeComponent extends Base implements AfterViewInit {
           'We prefer quality over quantity; it depends on the case, though.',
       },
     ];
+
+    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
+      this.showMenu = value;
+      this.dim = value;
+      console.log(this.showMenu);
+      console.log(this.dim);
+    });
   }
 
   setToggle() {
-    this.showMenu = this.uiService.getIsToggled();
+    this.uiService.toggleMenu();
+    if (this.dim) {
+      this.renderer.setStyle(this.document.body, 'overflow-y', 'hidden');
+    } else {
+      this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
+    }
   }
 }

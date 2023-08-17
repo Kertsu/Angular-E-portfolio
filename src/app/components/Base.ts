@@ -1,4 +1,22 @@
+import { DOCUMENT } from '@angular/common';
+import { Renderer2, ElementRef, Inject } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { StyleService } from '../services/style.service';
+import { UiService } from '../services/ui.service';
+
 export class Base {
+  showMenu!: boolean;
+  subscription!: Subscription;
+  dim!: boolean;
+
+  constructor(
+    protected uiService: UiService,
+    protected renderer: Renderer2,
+    protected styleService: StyleService,
+    protected elementRef: ElementRef,
+    @Inject(DOCUMENT) protected document: Document
+  ) {}
+
   setHeight(
     service: any,
     elementRef: any,

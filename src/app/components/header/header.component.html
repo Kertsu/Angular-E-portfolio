@@ -27,7 +27,12 @@
         </ul>
       </nav>
     </div>
-    <div (click)="onToggle()" class="button btn-bars">
+
+    <div
+      [class.close]="showCloseButton"
+      (click)="onToggle()"
+      class="button btn-bars"
+    >
       <div class="btn-line"></div>
       <div class="btn-line"></div>
       <div class="btn-line"></div>
