@@ -6,12 +6,11 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class UiService {
   private isToggled: boolean = false;
-  private isDarkMode: boolean = false;
-  private themeSubject = new Subject<any>();
   private subject = new Subject<any>();
+  private isDarkModeSubject = new BehaviorSubject<boolean>(false);
+  public isDarkMode$ = this.isDarkModeSubject.asObservable();
 
   toggleMenu() {
-    console.log(123);
     this.isToggled = !this.isToggled;
     this.subject.next(this.isToggled);
   }
@@ -21,12 +20,10 @@ export class UiService {
   }
 
   changeTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    this.themeSubject.next(this.isDarkMode);
-    console.log(this.isDarkMode);
+    this.isDarkModeSubject.next(!this.isDarkModeSubject.value);
   }
 
-  onChangeTheme() {
-    return this.themeSubject.asObservable();
-  }
+  // onChangeTheme() {
+  //   return this.themeSubject.asObservable();
+  // }
 }

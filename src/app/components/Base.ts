@@ -20,15 +20,7 @@ export class Base {
     this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
       this.showMenu = value;
       this.dim = value;
-      console.log(this.showMenu);
-      console.log(this.dim);
     });
-
-    this.themeSubscription = this.uiService
-      .onChangeTheme()
-      .subscribe((value) => {
-        this.isDarkMode = value;
-      });
   }
 
   setHeight(

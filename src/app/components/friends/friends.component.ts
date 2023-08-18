@@ -174,12 +174,5 @@ export class FriendsComponent extends Base implements AfterViewInit {
         ],
       },
     ];
-
-    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
-      this.showMenu = value;
-      this.dim = value;
-      console.log(this.showMenu);
-      console.log(this.dim);
-    });
   }
 }

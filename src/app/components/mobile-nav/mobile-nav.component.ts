@@ -14,7 +14,7 @@ export class MobileNavComponent {
 
   constructor(
     private router: Router,
-    private uiService: UiService,
+    protected uiService: UiService,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -28,10 +28,8 @@ export class MobileNavComponent {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        console.log('start', event);
         this.isClosing = true;
       } else if (event instanceof NavigationEnd) {
-        console.log('end', NavigationEnd);
         // Delay the reset of isClosing to allow animation to complete
         setTimeout(() => {
           this.isClosing = false;
@@ -39,6 +37,7 @@ export class MobileNavComponent {
       }
     });
   }
+
   isActive(routeLink: string): boolean {
     // Get the current URL
     const currentUrl = this.router.routerState.snapshot.url;
@@ -51,10 +50,15 @@ export class MobileNavComponent {
     this.uiService.toggleMenu();
     this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
   }
+
   clickedLi(event: Event) {
     this.uiService.toggleMenu();
     this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
 
     event.stopPropagation();
+  }
+
+  onChangeTheme() {
+    this.uiService.changeTheme();
   }
 }

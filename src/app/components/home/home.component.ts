@@ -22,7 +22,6 @@ export class HomeComponent extends Base implements AfterViewInit {
   services!: any;
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit executed');
     this.setHeight(this.styleService, this.elementRef, '.sec-1', this.renderer);
   }
 

@@ -155,11 +155,5 @@ export class AwardsAndHonorsComponent extends Base implements AfterViewInit {
         caption: `Our group in Computer Programming II was asked to present our work in the Research Colloquium of our seniors. We built a game using Unity Game Engine: all the animations, character, and backgrounds were originally created by us. The source code for the movements was also created by us. I watched a lot of videos just to be able to learn how things work in Unity.`,
       },
     ];
-    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
-      this.showMenu = value;
-      this.dim = value;
-      console.log(this.showMenu);
-      console.log(this.dim);
-    });
   }
 }

@@ -18,10 +18,13 @@
       </ng-container>
 
       <li><a class="mobile-nav-a mobile-theme-btn">Theme</a></li>
-      <li class="mobile-toggle">
+      <li class="mobile-toggle" (click)="onChangeTheme()">
         <i class="fas fa-moon mobile-toggle-icon"></i>
         <i class="fas fa-sun mobile-toggle-icon"></i>
-        <div class="mobile-toggle-ball"></div>
+        <div
+          class="mobile-toggle-ball"
+          [class.active]="uiService.isDarkMode$ | async"
+        ></div>
       </li>
     </ul>
   </nav>

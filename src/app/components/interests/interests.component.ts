@@ -92,12 +92,5 @@ export class InterestsComponent extends Base implements AfterViewInit {
         nen: `70`,
       },
     ];
-
-    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
-      this.showMenu = value;
-      this.dim = value;
-      console.log(this.showMenu);
-      console.log(this.dim);
-    });
   }
 }
