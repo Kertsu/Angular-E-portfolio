@@ -80,7 +80,7 @@ export class AwardsAndHonorsComponent extends Base implements AfterViewInit {
         section: 'Assoc. in Computer Technology',
       },
       {
-        img: 'au.jpg',
+        img: 'au.jpg', name:'Aurora Zafra Bactol',
         testimony:
           'Great sense of humour and really chill. Diligent to his studies, expect nothing less from this guy.',
         section: 'BS Information Systems',
@@ -94,7 +94,7 @@ export class AwardsAndHonorsComponent extends Base implements AfterViewInit {
       {
         img: 'kayla.png',
         testimony: 'Nice and smart. He enjoys everything he does.',
-        name: 'Raven Dela Rama',
+        name: 'Kayla Acosta',
         section: 'BS Information Systems',
       },
     ];
