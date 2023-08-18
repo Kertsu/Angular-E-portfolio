@@ -100,13 +100,4 @@ export class InterestsComponent extends Base implements AfterViewInit {
       console.log(this.dim);
     });
   }
-
-  setToggle() {
-    this.uiService.toggleMenu();
-    if (this.dim) {
-      this.renderer.setStyle(this.document.body, 'overflow-y', 'hidden');
-    } else {
-      this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
-    }
-  }
 }

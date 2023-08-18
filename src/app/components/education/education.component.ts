@@ -124,13 +124,4 @@ export class EducationComponent extends Base implements AfterViewInit {
       },
     ];
   }
-
-  setToggle() {
-    this.uiService.toggleMenu();
-    if (this.dim) {
-      this.renderer.setStyle(this.document.body, 'overflow-y', 'hidden');
-    } else {
-      this.renderer.setStyle(this.document.body, 'overflow-y', 'visible');
-    }
-  }
 }
