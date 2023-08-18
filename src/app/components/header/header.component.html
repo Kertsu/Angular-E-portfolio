@@ -19,10 +19,10 @@
               >
             </li>
           </ng-container>
-          <li class="toggle">
+          <li class="toggle" (click)="onChangeTheme()">
             <i class="fas fa-moon toggle-icon"></i>
             <i class="fas fa-sun toggle-icon"></i>
-            <div class="toggle-ball"></div>
+            <div class="toggle-ball" [class.active]="isDarkMode"></div>
           </li>
         </ul>
       </nav>

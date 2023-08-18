@@ -8,14 +8,28 @@ export class Base {
   showMenu!: boolean;
   subscription!: Subscription;
   dim!: boolean;
-
+  isDarkMode!: boolean;
+  themeSubscription!: Subscription;
   constructor(
     protected uiService: UiService,
     protected renderer: Renderer2,
     protected styleService: StyleService,
     protected elementRef: ElementRef,
     @Inject(DOCUMENT) protected document: Document
-  ) {}
+  ) {
+    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
+      this.showMenu = value;
+      this.dim = value;
+      console.log(this.showMenu);
+      console.log(this.dim);
+    });
+
+    this.themeSubscription = this.uiService
+      .onChangeTheme()
+      .subscribe((value) => {
+        this.isDarkMode = value;
+      });
+  }
 
   setHeight(
     service: any,
@@ -31,5 +45,9 @@ export class Base {
         renderer.setStyle(section, 'margin-top', marginTopValue);
       }
     });
+  }
+
+  setTheme() {
+    this.uiService.changeTheme();
   }
 }

@@ -1,5 +1,8 @@
 <!-- HEADER START -->
-<app-header (btnClick)="setToggle()"></app-header>
+<app-header
+  (btnClick)="setToggle()"
+  (toggleBallClick)="setTheme()"
+></app-header>
 <div
   [ngStyle]="{ display: dim ? 'block' : 'none' }"
   class="mobile-body-dim"

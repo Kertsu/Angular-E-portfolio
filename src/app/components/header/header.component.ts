@@ -10,30 +10,34 @@ import {
   Inject,
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { StyleService } from 'src/app/services/style.service';
 import { UiService } from 'src/app/services/ui.service';
+import { Base } from '../Base';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent extends Base implements OnInit {
   routes!: any;
   isHeaderScrolled: boolean = false;
   isClicked!: Observable<boolean>;
   showCloseButton!: boolean;
-  subscription: Subscription;
+
+  @Output() toggleBallClick = new EventEmitter();
   @Output() btnClick = new EventEmitter();
+
   constructor(
     private router: Router,
-    protected elementRef: ElementRef,
-    private styleService: StyleService,
-    private uiService: UiService,
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    protected override uiService: UiService,
+    protected override renderer: Renderer2,
+    protected override styleService: StyleService,
+    protected override elementRef: ElementRef,
+    @Inject(DOCUMENT) protected override document: Document
   ) {
+    super(uiService, renderer, styleService, elementRef, document);
     this.routes = [
       { routerLink: '/', title: 'Home' },
       { routerLink: '/education', title: 'Education' },
@@ -42,9 +46,9 @@ export class HeaderComponent implements OnInit {
       { routerLink: '/interests', title: 'Interests' },
     ];
 
-    this.subscription = this.uiService
-      .onToggleMenu()
-      .subscribe((value) => (this.showCloseButton = value));
+    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
+      this.showCloseButton = value;
+    });
   }
 
   ngOnInit(): void {
@@ -78,5 +82,9 @@ export class HeaderComponent implements OnInit {
 
   onToggle() {
     this.btnClick.emit();
+  }
+
+  onChangeTheme() {
+    this.toggleBallClick.emit();
   }
 }

@@ -123,12 +123,6 @@ export class EducationComponent extends Base implements AfterViewInit {
         section: 'Assoc. in Computer Technology',
       },
     ];
-    this.subscription = this.uiService.onToggleMenu().subscribe((value) => {
-      this.showMenu = value;
-      this.dim = value;
-      console.log(this.showMenu);
-      console.log(this.dim);
-    });
   }
 
   setToggle() {
