@@ -38,7 +38,7 @@
     />
   </div>
 </div>
-<section class="banner">
+<section [class.dark]="uiService.isDarkMode$ | async" class="banner">
   <div class="sec-2 container">
     <div id="skills sec2-col1-row2">
       <h2>SKILLS</h2>
@@ -116,7 +116,7 @@
     </div>
   </div>
 </section>
-<section class="banner">
+<section [class.dark]="uiService.isDarkMode$ | async" class="banner">
   <div class="sec-6 container">
     <div>
       <h2>My Offered Services</h2>
@@ -126,7 +126,7 @@
     </div>
     <div class="offers-wrapper">
       <ng-container *ngFor="let service of services">
-        <div>
+        <div [class.dark]="uiService.isDarkMode$ | async">
           <i class="{{ service.icon }}"></i>
           <h3>{{ service.title }}</h3>
           <p>

@@ -15,7 +15,7 @@
 <!-- MOBILE NAV -->
 <!-- MAIN START -->
 <app-banner [bannerData]="bannerData"></app-banner>
-<section class="banner">
+<section [class.dark]="uiService.isDarkMode$ | async" class="banner">
   <div class="educ-sec-2 container">
     <div class="timeline">
       <h2>My Education Timeline</h2>
@@ -28,13 +28,13 @@
     <ul>
       <ng-container *ngFor="let data of information">
         <li>
-          <div class="content">
+          <div class="content" [class.dark]="uiService.isDarkMode$ | async">
             <div>
               <img src="../../../assets/images/{{ data.img }}" alt="" />
             </div>
             <div>
               <h2>{{ data.title }}</h2>
-              <p>
+              <p [class.dark]="uiService.isDarkMode$ | async">
                 {{ data.caption }}
               </p>
             </div>

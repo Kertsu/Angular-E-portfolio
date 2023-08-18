@@ -15,12 +15,13 @@
 <!-- MOBILE NAV -->
 <!-- MAIN START -->
 <app-banner [bannerData]="bannerData"></app-banner>
-<section class="banner">
+<section [class.dark]="uiService.isDarkMode$ | async" class="banner">
   <div class="container friends-sec-2">
     <ng-container *ngFor="let data of friendsData">
       <div class="friends-cards">
         <div class="image-holder">
           <img
+            [class.dark]="uiService.isDarkMode$ | async"
             width="500"
             src="../../../assets/images/friends/{{ data.img }}"
             alt=""

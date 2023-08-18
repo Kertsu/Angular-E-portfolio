@@ -1,6 +1,7 @@
 <header
   class="header"
   id="header"
+  [class.dark]="uiService.isDarkMode$ | async"
   [ngClass]="{ 'header-scrolled': isHeaderScrolled }"
 >
   <div class="container container-nav">
@@ -13,6 +14,7 @@
           <ng-container *ngFor="let route of routes; let i = index">
             <li>
               <a
+                [class.dark]="uiService.isDarkMode$ | async"
                 [class.active]="isActive(route.routerLink)"
                 [routerLink]="[route.routerLink]"
                 >{{ route.title }}</a
@@ -36,9 +38,9 @@
       (click)="onToggle()"
       class="button btn-bars"
     >
-      <div class="btn-line"></div>
-      <div class="btn-line"></div>
-      <div class="btn-line"></div>
+      <div [class.dark]="uiService.isDarkMode$ | async" class="btn-line"></div>
+      <div [class.dark]="uiService.isDarkMode$ | async" class="btn-line"></div>
+      <div [class.dark]="uiService.isDarkMode$ | async" class="btn-line"></div>
     </div>
   </div>
 </header>

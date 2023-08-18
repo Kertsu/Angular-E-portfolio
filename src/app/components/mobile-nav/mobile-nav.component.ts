@@ -1,16 +1,49 @@
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input, Renderer2 } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Input,
+  Renderer2,
+  HostBinding,
+} from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { UiService } from 'src/app/services/ui.service';
 @Component({
   selector: 'app-mobile-nav',
   templateUrl: './mobile-nav.component.html',
   styleUrls: ['./mobile-nav.component.css'],
+  animations: [
+    trigger('sidebarState', [
+      state(
+        'hidden',
+        style({
+          width: '0',
+          opacity: '0',
+        })
+      ),
+      state(
+        'visible',
+        style({
+          width: '220px',
+          opacity: '1',
+        })
+      ),
+      transition('hidden <=> visible', animate('300ms ease-out')),
+    ]),
+  ],
 })
 export class MobileNavComponent {
   routes: any;
   isClosing: boolean = false;
-  @Input() showMenu!: boolean;
+
+  @HostBinding('sidebarState') @Input() showMenu!: boolean;
 
   constructor(
     private router: Router,

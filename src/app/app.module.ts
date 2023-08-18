@@ -13,7 +13,7 @@ import { BlueSectionComponent } from './components/blue-section/blue-section.com
 import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { TestimoniesComponent } from './components/testimonies/testimonies.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,7 @@ import { TestimoniesComponent } from './components/testimonies/testimonies.compo
     BannerComponent,
     TestimoniesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -33,7 +33,10 @@
             <div class="d-flex">
               <p>{{ data.date }}</p>
             </div>
-            <div class="wrapper-body">
+            <div
+              class="wrapper-body"
+              [class.dark]="uiService.isDarkMode$ | async"
+            >
               <h4>{{ data.event }}</h4>
               <p>{{ data.title }}</p>
             </div>
@@ -44,7 +47,7 @@
   </div>
 </div>
 
-<section class="banner">
+<section [class.dark]="uiService.isDarkMode$ | async" class="banner">
   <div class="container awards-sec-2">
     <div class="achievement-title">
       <h2>My Latest Achievements</h2>

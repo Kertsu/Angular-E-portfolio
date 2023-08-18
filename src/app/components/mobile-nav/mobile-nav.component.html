@@ -1,13 +1,15 @@
 <div
+  [class.dark]="uiService.isDarkMode$ | async"
   id="menu"
   class="menu-div"
-  [ngClass]="{ animate: showMenu, 'animate-exit': isClosing }"
+  [@sidebarState]="showMenu ? 'visible' : 'hidden'"
 >
   <nav class="mobile-nav">
     <ul class="mobile-nav-ul">
       <ng-container *ngFor="let route of routes; let i = index">
         <li (click)="clickedLi($event)">
           <a
+            [class.dark]="uiService.isDarkMode$ | async"
             (click)="clickedA()"
             class="mobile-nav-a"
             [class.active]="isActive(route.routerLink)"
@@ -17,7 +19,13 @@
         </li>
       </ng-container>
 
-      <li><a class="mobile-nav-a mobile-theme-btn">Theme</a></li>
+      <li>
+        <a
+          [class.active]="uiService.isDarkMode$ | async"
+          class="mobile-nav-a mobile-theme-btn"
+          >Theme</a
+        >
+      </li>
       <li class="mobile-toggle" (click)="onChangeTheme()">
         <i class="fas fa-moon mobile-toggle-icon"></i>
         <i class="fas fa-sun mobile-toggle-icon"></i>

@@ -31,9 +31,14 @@
 
   <div class="interests-sec-3 container">
     <ng-container *ngFor="let data of interestsData">
-      <div class="interests-cards">
+      <div class="interests-cards" [class.dark]="uiService.isDarkMode$ | async">
         <div class="interests-image-holder">
-          <img width="500" src="../../../assets/images/{{ data.img }}" alt="" />
+          <img
+            [class.dark]="uiService.isDarkMode$ | async"
+            width="500"
+            src="../../../assets/images/{{ data.img }}"
+            alt=""
+          />
         </div>
         <div class="interests-name-holder">
           <h2>{{ data.name }}</h2>
@@ -52,7 +57,7 @@
               [style.width.%]="data.nen"
             ></div>
           </div>
-          <p>Nen Ability Scale</p>
+          <p [class.dark]="uiService.isDarkMode$ | async">Nen Ability Scale</p>
         </div>
       </div>
     </ng-container>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-testimonies',
@@ -7,4 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class TestimoniesComponent {
   @Input() testimoniesData: any;
+
+  constructor(protected uiService: UiService) {}
 }

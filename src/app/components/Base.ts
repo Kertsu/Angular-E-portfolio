@@ -5,7 +5,7 @@ import { StyleService } from '../services/style.service';
 import { UiService } from '../services/ui.service';
 
 export class Base {
-  showMenu!: boolean;
+  showMenu: boolean = false;
   subscription!: Subscription;
   dim!: boolean;
   isDarkMode!: boolean;
@@ -41,9 +41,20 @@ export class Base {
 
   setTheme() {
     this.uiService.changeTheme();
+    console.log('set theme');
+    this.uiService.isDarkMode$.subscribe((isDarkMode) => {
+      if (isDarkMode) {
+        this.renderer.addClass(this.document.body, 'dark');
+        this.renderer.addClass(this.document.body.querySelector('img'), 'dark');
+      } else {
+        this.renderer.removeClass(this.document.body, 'dark');
+        this.renderer.addClass(this.document.body.querySelector('img'), 'dark');
+      }
+    });
   }
 
   setToggle() {
+    this.showMenu = !this.showMenu;
     this.uiService.toggleMenu();
     if (this.dim) {
       this.renderer.setStyle(this.document.body, 'overflow-y', 'hidden');

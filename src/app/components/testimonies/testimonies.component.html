@@ -3,7 +3,6 @@
     <h2>People's Feedback About Me</h2>
     <p>Don't worry, I asked their permissions.</p>
   </div>
-
   <div>
     <ng-container *ngFor="let data of testimoniesData">
       <div class="testimonies-content">
@@ -12,8 +11,8 @@
         </div>
         <div class="description">
           <p>{{ data.testimony }}</p>
-          <h4>{{ data.name }}</h4>
-          <p>{{ data.section }}</p>
+          <h4 [class.dark]="uiService.isDarkMode$ | async">{{ data.name }}</h4>
+          <p [class.dark]="uiService.isDarkMode$ | async">{{ data.section }}</p>
         </div>
       </div>
     </ng-container>

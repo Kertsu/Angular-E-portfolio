@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { StyleService } from 'src/app/services/style.service';
 import { UiService } from 'src/app/services/ui.service';
 import { Base } from '../Base';
+import { MobileNavComponent } from '../mobile-nav/mobile-nav.component';
 
 @Component({
   selector: 'app-header',
