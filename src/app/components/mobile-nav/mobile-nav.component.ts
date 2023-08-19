@@ -59,16 +59,7 @@ export class MobileNavComponent {
       { routerLink: '/interests', title: 'Interests' },
     ];
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.isClosing = true;
-      } else if (event instanceof NavigationEnd) {
-        // Delay the reset of isClosing to allow animation to complete
-        setTimeout(() => {
-          this.isClosing = false;
-        }, 300);
-      }
-    });
+    
   }
 
   isActive(routeLink: string): boolean {
@@ -93,5 +84,14 @@ export class MobileNavComponent {
 
   onChangeTheme() {
     this.uiService.changeTheme();
+    this.uiService.isDarkMode$.subscribe((isDarkMode) => {
+      if (isDarkMode) {
+        this.renderer.addClass(this.document.body, 'dark');
+        this.renderer.addClass(this.document.body.querySelector('img'), 'dark');
+      } else {
+        this.renderer.removeClass(this.document.body, 'dark');
+        this.renderer.addClass(this.document.body.querySelector('img'), 'dark');
+      }
+    });
   }
 }
