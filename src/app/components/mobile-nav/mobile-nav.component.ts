@@ -13,13 +13,7 @@ import {
   Renderer2,
   HostBinding,
 } from '@angular/core';
-import {
-  Router,
-  NavigationStart,
-  NavigationEnd,
-  ActivatedRoute,
-} from '@angular/router';
-import { delay } from 'rxjs/operators';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { UiService } from 'src/app/services/ui.service';
 @Component({
   selector: 'app-mobile-nav',
@@ -41,7 +35,7 @@ import { UiService } from 'src/app/services/ui.service';
           opacity: '1',
         })
       ),
-      transition('hidden <=> visible', animate('500ms ease-out')),
+      transition('hidden <=> visible', animate('300ms ease-out')),
     ]),
   ],
 })
@@ -55,8 +49,7 @@ export class MobileNavComponent {
     private router: Router,
     protected uiService: UiService,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document,
-    private route: ActivatedRoute
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.routes = [
       { routerLink: '/', title: 'Home' },
@@ -65,6 +58,17 @@ export class MobileNavComponent {
       { routerLink: '/friends', title: 'Friends' },
       { routerLink: '/interests', title: 'Interests' },
     ];
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isClosing = true;
+      } else if (event instanceof NavigationEnd) {
+        // Delay the reset of isClosing to allow animation to complete
+        setTimeout(() => {
+          this.isClosing = false;
+        }, 300);
+      }
+    });
   }
 
   isActive(routeLink: string): boolean {
