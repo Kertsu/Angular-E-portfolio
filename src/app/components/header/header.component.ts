@@ -40,7 +40,7 @@ export class HeaderComponent extends Base implements OnInit {
   ) {
     super(uiService, renderer, styleService, elementRef, document);
     this.routes = [
-      { routerLink: '/', title: 'Home' },
+      { routerLink: '/home', title: 'Home' },
       { routerLink: '/education', title: 'Education' },
       { routerLink: '/awards-and-honors', title: 'Awards' },
       { routerLink: '/friends', title: 'Friends' },

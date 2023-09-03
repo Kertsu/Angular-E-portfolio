@@ -1,0 +1,20 @@
+<!-- HEADER START -->
+<app-header
+  (btnClick)="setToggle()"
+  (toggleBallClick)="setTheme()"
+></app-header>
+<div
+  [ngStyle]="{ display: dim ? 'block' : 'none' }"
+  class="mobile-body-dim"
+  (click)="setToggle()"
+></div>
+<!-- HEADER END -->
+<!-- MOBILE NAV START-->
+<app-mobile-nav [showMenu]="showMenu"></app-mobile-nav>
+<!-- MOBILE NAV END-->
+<!-- MAIN -->
+<router-outlet></router-outlet>
+<!-- MAIN -->
+<!-- FOOTER START -->
+<app-footer></app-footer>
+<!-- FOOTER END -->

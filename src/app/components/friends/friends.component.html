@@ -1,18 +1,4 @@
-<!-- HEADER START -->
-<app-header
-  (btnClick)="setToggle()"
-  (toggleBallClick)="setTheme()"
-></app-header>
 
-<div
-  [ngStyle]="{ display: dim ? 'block' : 'none' }"
-  class="mobile-body-dim"
-  (click)="setToggle()"
-></div>
-<!-- HEADER END -->
-<!-- MOBILE NAV -->
-<app-mobile-nav [showMenu]="showMenu"></app-mobile-nav>
-<!-- MOBILE NAV -->
 <!-- MAIN START -->
 <app-banner [bannerData]="bannerData"></app-banner>
 <section [class.dark]="uiService.isDarkMode$ | async" class="banner">
@@ -53,6 +39,4 @@
   </div>
 </section>
 <!-- MAIN END -->
-<!-- FOOTER START -->
-<app-footer></app-footer>
-<!-- FOOTER END -->
+
